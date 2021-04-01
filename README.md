@@ -40,3 +40,4 @@ If you pasted your converted string into slack and it does nothing fancy, try th
 1. Click the emoji button in the text input area
 1. Click the _add emoji_ button in the bottom left of the popup
 1. Click the tab that says _emoji packs_ and install the alphabet pack
+1. Annoy your coworkers!
