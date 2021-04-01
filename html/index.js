@@ -11,10 +11,10 @@ const html = async ({ text, emojified, spacer, color }) => {
         <html>
           <head>
             <meta charset="UTF-8">
-            <meta name="description" content="Emojify your text with slack's alphabet emoji pack." />
+            <meta name="description" content="Emojify your text for use with slack's alphabet emoji pack." />
             <meta property="og:title" content="Alphabet Emojifier by 🥨Josh" />
             <meta property="og:image" content="https://user-images.githubusercontent.com/30707961/113239810-7796c600-9279-11eb-8eee-95f195427692.png" />
-            <meta property="og:description" content="Emojify your text with slack's alphabet emoji pack." />
+            <meta property="og:description" content="Emojify your text for use with slack's alphabet emoji pack." />
             <meta name="viewport" content="width=device-width,initial-scale=1">
             <title>Alphabet Emojifier</title>
 
@@ -29,15 +29,20 @@ const html = async ({ text, emojified, spacer, color }) => {
               }
 
               h1 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
               }
 
               h2 {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
               }
 
               h3 {
                 font-size: 1rem;
+              }
+
+              h1 .subtitle {
+                  font-weight: normal;
+                  font-size: 1rem;
               }
 
               form {
@@ -145,7 +150,11 @@ const html = async ({ text, emojified, spacer, color }) => {
 
         <body>
           <div id="emojifier">
-            <h1>Alphabet Emojifier <small>by <a target="_blank" href="https://twitter.com/3cordguy">🥨Josh</a></small></h1>
+            <h1>
+                👏 Alphabet Emojifier 👏
+                <div class="subtitle">Emojify text quickly for use with Slack's Alphabet Emoji Pack</div>
+                <span class="subtitle">by <a target="_blank" href="https://twitter.com/3cordguy">🥨Josh</a></span>
+            </h1>
             <form method="GET" action="">
               <label class="field">
                 Text to Emojify
@@ -175,8 +184,7 @@ const html = async ({ text, emojified, spacer, color }) => {
             <hr>
 
             ${emojified ? getEmojified(emojified) : ''}
-            <small>Copyright 2021 Josh Weaver</small>
-            <small><a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
+            <small>Copyright 2021 Josh Weaver » <a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
           </div>
         </body>
 
