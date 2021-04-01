@@ -1,0 +1,6 @@
+account_id = "32147ec66cba8471560516d81ffe62ff"
+name = "alphabet-emojifier"
+route = ""
+type = "webpack"
+workers_dev = true
+zone_id = ""
