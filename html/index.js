@@ -13,6 +13,7 @@ const html = async ({ text, emojified, spacer, color }) => {
             <meta charset="UTF-8">
             <meta name="description" content="Emojify your text with slack's alphabet emoji pack." />
             <meta property="og:title" content="Alphabet Emojifier by 🥨Josh" />
+            <meta property="og:image" content="https://user-images.githubusercontent.com/30707961/113239810-7796c600-9279-11eb-8eee-95f195427692.png" />
             <meta property="og:description" content="Emojify your text with slack's alphabet emoji pack." />
             <meta name="viewport" content="width=device-width,initial-scale=1">
             <title>Alphabet Emojifier</title>

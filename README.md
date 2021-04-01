@@ -29,7 +29,7 @@ wrangler dev
 
 ## Try it out
 
-[Online Demo](alphabet-emojifier.3cordguy.workers.dev)
+[Online Demo](https://alphabet-emojifier.3cordguy.workers.dev)
 
 ## Slack Alpha-what?
 
