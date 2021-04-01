@@ -12,6 +12,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
         <html>
           <head>
             <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="description" content="Emojify your text for use with slack's alphabet emoji pack." />
             <meta property="og:title" content="Alphabet Emojifier by 🥨Josh" />
             <meta property="og:image" content="https://user-images.githubusercontent.com/30707961/113239810-7796c600-9279-11eb-8eee-95f195427692.png" />
@@ -55,7 +56,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
               }
 
               form {
-                width: 600px;
+                max-width: 600px;
                 margin: 20px auto;
                 padding: 20px;
                 background: #f4f4f4;
@@ -164,7 +165,6 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
               #emojifier {
                 margin: 20px auto;
                 text-align: center;
-                max-width: 600px;
               }
 
               a, a:active, a:visited {
