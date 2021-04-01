@@ -61,10 +61,11 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 background: #f4f4f4;
                 border-radius: 8px;
                 box-shadow: 0 5px 20px rgb(1 1 1 / 20%);
+                box-sizing: border-box;
               }
 
               textarea {
-                width: 600px;
+                width: 100%;
                 margin: 0 auto;
                 background: #eee;
                 border-radius: 4px;
