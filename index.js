@@ -15,16 +15,16 @@ async function handleRequest(request) {
 
   if (request.method === 'GET') {
     const { searchParams } = new URL(request.url)
-    parsed.text = searchParams.get('text') || 'Attention Please!'
+    parsed.text = searchParams.get('text') || ''
     parsed.color = searchParams.get('color') || DEFAULT_COLOR
-    parsed.spacer = searchParams.get('spacer') || ' '
+    parsed.spacer = searchParams.get('spacer') || ':clap:'
   }
 
   if (request.method === 'POST') {
     let json = JSON.parse(await request.text())
     parsed.text = json.text
     parsed.color = json.color || DEFAULT_COLOR
-    parsed.spacer = json.spacer || ' '
+    parsed.spacer = json.spacer || ''
   }
 
   const prefix =

@@ -1,4 +1,12 @@
 const html = async ({ text, emojified, spacer, color }) => {
+  const getEmojified = emo => {
+    return `
+        <label class="field">Emojification Complete 🎉</label>
+        <textarea id="emojified" rows="6" readonly>${emo}</textarea>
+        <button id="copy">Copy</button>
+      `
+  }
+
   return `
         <html>
           <head>
@@ -10,11 +18,13 @@ const html = async ({ text, emojified, spacer, color }) => {
             <title>Alphabet Emojifier</title>
 
             <style>
-            body {
+              body {
+                color: #333;
                 font-family: Sans-serif;
-                background: #e96443;  /* fallback for old browsers */
-                background: -webkit-linear-gradient(to left, #904e95, #e96443);  /* Chrome 10-25, Safari 5.1-6 */
-                background: linear-gradient(to left, #904e95, #e96443); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                background: #8e9eab;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
               }
 
               h1 {
@@ -59,6 +69,13 @@ const html = async ({ text, emojified, spacer, color }) => {
                 font-weight: bold;
                 margin-bottom: 8px;
                 text-align: left;
+              }
+
+              label.field small {
+                  display: inline;
+                  font-weight: normal;
+                  color: #333;
+                  font-size: 0.6em;
               }
 
               input[type="text"] {
@@ -118,6 +135,10 @@ const html = async ({ text, emojified, spacer, color }) => {
                 max-width: 600px;
               }
 
+              a, a:active, a:visited {
+                cursor: pointer;
+                color: #ff512f;
+              }
             </style>
         </head>
 
@@ -142,7 +163,7 @@ const html = async ({ text, emojified, spacer, color }) => {
                 </div>
                 <div>
                   <label class="field">
-                    Spacer
+                    Spacer <small>(replaces all space characters)</small>
                   </label>
                   <input type="text" name="spacer" placeholder=":clap:" value="${spacer}" />
                 </div>
@@ -152,9 +173,9 @@ const html = async ({ text, emojified, spacer, color }) => {
 
             <hr>
 
-            <textarea id="emojified" rows="6" readonly>${emojified}</textarea>
-            <button id="copy">Copy</button>
-            <small>Copy and paste the above into Slack</small>
+            ${emojified ? getEmojified(emojified) : ''}
+            <small>Copyright 2021 Josh Weaver</small>
+            <small><a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
           </div>
         </body>
 
