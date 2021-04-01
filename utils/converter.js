@@ -9,20 +9,20 @@ module.exports = ({
   },
 }) => {
   let convertedStr = ''
-  text
-    .toLowerCase()
-    .split('')
-    .forEach(char => {
-      if (alphas.test(char)) {
-        convertedStr += `:${prefix}-${char}:`
-      } else if (special[char]) {
-        convertedStr += `:${prefix}-${special[char]}:`
-      } else if (char === ' ') {
-        convertedStr += spacer
-      } else {
-        convertedStr += char
-      }
-    })
+  let chars = text.toLowerCase().split('')
+  let words = text.toLowerCase().split(' ')
 
-  return convertedStr
+  chars.forEach(char => {
+    if (alphas.test(char)) {
+      convertedStr += `:${prefix}-${char}:`
+    } else if (special[char]) {
+      convertedStr += `:${prefix}-${special[char]}:`
+    } else if (char === ' ') {
+      convertedStr += spacer
+    } else {
+      convertedStr += char
+    }
+  })
+
+  return { converted: convertedStr, words: words.length, chars: chars.length }
 }

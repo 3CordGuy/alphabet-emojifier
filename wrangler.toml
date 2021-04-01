@@ -4,3 +4,7 @@ route = ""
 type = "webpack"
 workers_dev = true
 zone_id = ""
+
+kv_namespaces = [
+  {binding = "COUNT", id = "1e5d44ad667f46eeafa59283523d1f66", preview_id = "ca042385593c4c05b22454aca0b66698"},
+]

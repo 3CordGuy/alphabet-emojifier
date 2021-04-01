@@ -1,6 +1,7 @@
-const html = async ({ text, emojified, spacer, color }) => {
+const html = async ({ text, emojified, spacer, color, counts }) => {
   const getEmojified = emo => {
     return `
+        <hr>
         <label class="field">Emojification Complete 🎉</label>
         <textarea id="emojified" rows="6" readonly>${emo}</textarea>
         <button id="copy">Copy</button>
@@ -107,6 +108,8 @@ const html = async ({ text, emojified, spacer, color }) => {
               button{
                 display: block;
                 margin-bottom: 20px;
+                margin-left: auto;
+                margin-right: auto;
                 padding: 8px 16px;
                 text-align: center;
                 text-transform: uppercase;
@@ -129,6 +132,7 @@ const html = async ({ text, emojified, spacer, color }) => {
                 flex-direction: row;
                 align-content: center;
                 align-items: start;
+                justify-content: space-evenly;
               }
 
               .field-group > div {
@@ -144,6 +148,13 @@ const html = async ({ text, emojified, spacer, color }) => {
               a, a:active, a:visited {
                 cursor: pointer;
                 color: #ff512f;
+              }
+
+              .counter {
+                  padding: 4px 8px;
+                  border-radius: 9999px;
+                  background-color: #ff512f;
+                  color: white;
               }
             </style>
         </head>
@@ -181,9 +192,16 @@ const html = async ({ text, emojified, spacer, color }) => {
               <button type="submit">Emojify it!</button>
             </form>
 
-            <hr>
+
 
             ${emojified ? getEmojified(emojified) : ''}
+
+            <hr>
+            <h3><span class="counter">${
+              counts.words
+            }</span> words emojified <span class="counter">${
+    counts.chars
+  }</span> characters emojified</h3>
             <small>Copyright 2021 Josh Weaver » <a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
           </div>
         </body>
