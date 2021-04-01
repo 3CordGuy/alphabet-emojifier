@@ -31,10 +31,18 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
 
               h1 {
                 font-size: 1.8rem;
+                margin-bottom: 20px;
+              }
+
+              h1 .grad {
+                background: -webkit-linear-gradient(#dd2476, #ff512f);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
               }
 
               h2 {
                 font-size: 1.5rem;
+                margin-bottom: 20px;
               }
 
               h3 {
@@ -43,12 +51,16 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
 
               h1 .subtitle {
                   font-weight: normal;
-                  font-size: 1rem;
+                  font-size: 0.8rem;
               }
 
               form {
                 width: 600px;
                 margin: 20px auto;
+                padding: 20px;
+                background: #f4f4f4;
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgb(1 1 1 / 20%);
               }
 
               textarea {
@@ -59,12 +71,18 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 border: 1px solid #ccc;
                 white-space: wrap;
                 padding: 8px 12px;
+                font-size: 1.1rem;
               }
 
               small {
-                margin-top: 10px;
                 display: block;
                 font-size: 0.7em;
+              }
+
+              small.help-text {
+                margin-top: -16px;
+                color: #555;
+                text-align: left;
               }
 
               table {
@@ -83,6 +101,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                   font-weight: normal;
                   color: #333;
                   font-size: 0.6em;
+                  margin-bottom: 8px;
               }
 
               input[type="text"] {
@@ -119,6 +138,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 border-radius: 10px;
                 border: none;
                 cursor: pointer;
+                font-size: 1.2rem;
               }
 
               button:hover {
@@ -133,6 +153,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 align-content: center;
                 align-items: start;
                 justify-content: space-evenly;
+                margin-bottom: 20px;
               }
 
               .field-group > div {
@@ -162,9 +183,8 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
         <body>
           <div id="emojifier">
             <h1>
-                👏 Alphabet Emojifier 👏
-                <div class="subtitle">Emojify text quickly for use with Slack's Alphabet Emoji Pack</div>
-                <span class="subtitle">by <a target="_blank" href="https://twitter.com/3cordguy">🥨Josh</a></span>
+                👏 <span class="grad">Alphabet Emojifier</span> 👏
+                <div class="subtitle">Emojify text for use with Slack's Alphabet Emoji Pack</div>
             </h1>
             <form method="GET" action="">
               <label class="field">
@@ -184,25 +204,26 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 </div>
                 <div>
                   <label class="field">
-                    Spacer <small>(replaces all space characters)</small>
+                    Spacer
                   </label>
                   <input type="text" name="spacer" placeholder=":clap:" value="${spacer}" />
+                  <small class="help-text">Replaces all space characters</small>
                 </div>
               </div>
-              <button type="submit">Emojify it!</button>
+              <button type="submit">Emojify it</button>
             </form>
 
 
 
             ${emojified ? getEmojified(emojified) : ''}
 
-            <hr>
             <h3><span class="counter">${
               counts.words
-            }</span> words emojified <span class="counter">${
+            }</span> words and <span class="counter">${
     counts.chars
-  }</span> characters emojified</h3>
-            <small>Copyright 2021 Josh Weaver » <a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
+  }</span> characters have been emojified using this tool</h3>
+
+            <small>Copyright 2021 <a target="_blank" href="https://twitter.com/3cordguy">🥨Josh Weaver</a> » <a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
           </div>
         </body>
 
