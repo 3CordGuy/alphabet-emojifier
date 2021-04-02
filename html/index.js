@@ -4,7 +4,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
         <hr>
         <label class="field">Emojification Complete 🎉</label>
         <textarea id="emojified" rows="6" readonly>${emo}</textarea>
-        <button id="copy">Copy</button>
+        <button id="copy" type="button">Copy</button>
       `
   }
 
@@ -167,6 +167,10 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 text-align: center;
               }
 
+              #emojified {
+                  color: #555;
+              }
+
               a, a:active, a:visited {
                 cursor: pointer;
                 color: #ff512f;
@@ -212,11 +216,13 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
                 </div>
               </div>
               <button type="submit">Emojify it</button>
+
+
+              ${emojified ? getEmojified(emojified) : ''}
             </form>
 
 
 
-            ${emojified ? getEmojified(emojified) : ''}
 
             <h3><span class="counter">${
               counts.words
