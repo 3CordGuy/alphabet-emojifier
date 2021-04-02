@@ -17,7 +17,7 @@ async function handleRequest(request) {
   let newCharsCount = 0
 
   try {
-    let { converted, words, chars } = converter({
+    let { convertedText, totalChars, totalWords } = converter({
       text,
       prefix,
       spacer,
@@ -28,11 +28,11 @@ async function handleRequest(request) {
 
     if (text) {
       newWordsCount = newWordsCount
-        ? parseInt(newWordsCount, 10) + words
-        : words
+        ? parseInt(newWordsCount, 10) + totalWords
+        : totalWords
       newCharsCount = newCharsCount
-        ? parseInt(newCharsCount, 10) + chars
-        : chars
+        ? parseInt(newCharsCount, 10) + totalChars
+        : totalChars
 
       await db.put({ key: 'words_converted', data: newWordsCount })
       await db.put({ key: 'chars_converted', data: newCharsCount })
@@ -42,7 +42,7 @@ async function handleRequest(request) {
       return new Response(
         await html({
           text,
-          emojified: converted,
+          emojified: convertedText,
           counts: {
             words: newWordsCount,
             chars: newCharsCount,
@@ -59,7 +59,7 @@ async function handleRequest(request) {
       )
     }
 
-    return new Response(converted, {
+    return new Response(convertedText, {
       status: 200,
       'content-type': 'text/plain',
     })

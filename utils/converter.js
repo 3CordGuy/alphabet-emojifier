@@ -24,5 +24,9 @@ module.exports = ({
     }
   })
 
-  return { converted: convertedStr, words: words.length, chars: chars.length }
+  return {
+    convertedText: convertedStr,
+    totalWords: words.length,
+    totalChars: chars.length,
+  }
 }

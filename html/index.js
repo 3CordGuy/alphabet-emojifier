@@ -1,9 +1,9 @@
 const html = async ({ text, emojified, spacer, color, counts }) => {
-  const getEmojified = emo => {
+  const getEmojified = convertedText => {
     return `
         <hr>
         <label class="field">Emojification Complete 🎉</label>
-        <textarea id="emojified" rows="6" readonly>${emo}</textarea>
+        <textarea id="emojified" rows="6" readonly>${convertedText}</textarea>
         <button id="copy" type="button">Copy</button>
       `
   }
