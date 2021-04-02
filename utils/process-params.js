@@ -17,7 +17,7 @@ module.exports = async req => {
   }
 
   let prefix = parsed.color === 'yellow' ? 'alphabet-yellow' : 'alphabet-white'
-  console.log(parsed)
+
   return {
     text: parsed.text,
     color: parsed.color,
