@@ -1,6 +1,7 @@
 const converter = require('./utils/converter')
 const html = require('./html')
 const db = require('./db/counter')
+const processParams = require('./utils/process-params')
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
@@ -11,39 +12,21 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
-  let parsed = { text: '', color: 'white', space: ' ' }
-  const DEFAULT_COLOR = 'white'
+  let { text, color, spacer, prefix } = await processParams(request)
   let newWordsCount = 0
   let newCharsCount = 0
 
-  if (request.method === 'GET') {
-    const { searchParams } = new URL(request.url)
-    parsed.text = searchParams.get('text') || ''
-    parsed.color = searchParams.get('color') || DEFAULT_COLOR
-    parsed.spacer = searchParams.get('spacer') || ':clap:'
-  }
-
-  if (request.method === 'POST') {
-    let json = JSON.parse(await request.text())
-    parsed.text = json.text
-    parsed.color = json.color || DEFAULT_COLOR
-    parsed.spacer = json.spacer || ''
-  }
-
-  const prefix =
-    parsed.color === 'yellow' ? 'alphabet-yellow' : 'alphabet-white'
-
   try {
     let { converted, words, chars } = converter({
-      text: parsed.text,
+      text,
       prefix,
-      spacer: parsed.spacer,
+      spacer,
     })
 
     newWordsCount = (await db.get({ key: 'words_converted' })) || 0
     newCharsCount = (await db.get({ key: 'chars_converted' })) || 0
-    console.log(newWordsCount, newCharsCount)
-    if (parsed.text) {
+
+    if (text) {
       newWordsCount = newWordsCount
         ? parseInt(newWordsCount, 10) + words
         : words
@@ -58,14 +41,14 @@ async function handleRequest(request) {
     if (request.method === 'GET') {
       return new Response(
         await html({
-          text: parsed.text,
+          text,
           emojified: converted,
           counts: {
             words: newWordsCount,
             chars: newCharsCount,
           },
-          color: parsed.color,
-          spacer: parsed.spacer,
+          color,
+          spacer,
         }),
         {
           status: 200,
