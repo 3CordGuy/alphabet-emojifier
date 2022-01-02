@@ -230,7 +230,7 @@ const html = async ({ text, emojified, spacer, color, counts }) => {
     counts.chars
   }</span> characters have been emojified using this tool</h3>
 
-            <small>Copyright 2021 <a target="_blank" href="https://twitter.com/3cordguy">🥨Josh Weaver</a> » <a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
+            <small>Copyright ${new Date().getFullYear()} <a target="_blank" href="https://twitter.com/3cordguy">🥨Josh Weaver</a> » <a href="https://github.com/3CordGuy/alphabet-emojifier" target="_blank">Source Code</a></small>
           </div>
         </body>
 
